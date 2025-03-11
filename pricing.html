@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing</title>
+    <style>
+        :root {
+            --bg-color: #f0f0f0;
+            --text-color: #333;
+            --card-bg: white;
+            --header-bg: #333;
+            --nav-bg: #444;
+            --footer-bg: #333;
+            --primary-color: #2196F3;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo {
+            max-height: 100px;
+            width: auto;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dark-mode-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 15px;
+        }
+
+        .dark-mode-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        nav {
+            background-color: var(--nav-bg);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        .pricing-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .pricing-package {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .pricing-package h3 {
+            color: var(--primary-color);
+            margin: 0 0 10px;
+        }
+
+        .pricing-package .price {
+            font-size: 1.5em;
+            color: #2ecc71;
+            margin-bottom: 10px;
+        }
+
+        .pricing-package .select-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .pricing-package .select-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .contact-form {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border-radius: 5px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #1976D2;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2a2a2a;
+            --header-bg: #222;
+            --nav-bg: #333;
+            --footer-bg: #222;
+            --primary-color: #42a5f5;
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="designs.html">Designs</a>
+        <a href="about.html">About Me</a>
+        <a href="pricing.html">Pricing</a>
+    </nav>
+
+    <div class="pricing-container">
+        <div class="pricing-package">
+            <h3>SPECIAL PACKAGE<br>[SALE]</h3>
+            <p class="price">$20</p>
+            <p>1 Logo Design<br>5 Revisions<br>Delivery in 3 Days<br></p>
+            <a href="#contact-form" class="select-btn">Select</a>
+        </div>
+        <div class="pricing-package">
+            <h3>Basic Package</h3>
+            <p class="price">$50</p>
+            <p>1 Logo Design<br>1 Revision<br>Delivery in 3 Days</p>
+            <a href="#contact-form" class="select-btn">Select</a>
+        </div>
+        <div class="pricing-package">
+            <h3>Standard Package</h3>
+            <p class="price">$100</p>
+            <p>2 Logo Designs<br>2 Revisions<br>Delivery in 5 Days<br></p>
+            <a href="#contact-form" class="select-btn">Select</a>
+        </div>
+        <div class="pricing-package">
+            <h3>Premium Package</h3>
+            <p class="price">$200</p>
+            <p>3 Logo Designs<br>Unlimited Revisions<br>Delivery in 5 Days<br></p>
+            <a href="#contact-form" class="select-btn">Select</a>
+        </div>
+        <div class="contact-form" id="contact-form">
+            <h3>Contact Me</h3>
+            <form action="https://formsubmit.co/malachitedwyer@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Order Submission - Logo Design">
+                <input type="hidden" name="_autoresponse" value="Thank you for your order! I'll get back to you soon with the next steps.">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="true">
+                <label for="package">Package:</label>
+                <select id="package" name="package" required>
+                    <option value="" disabled selected>Select a package</option>
+                    <option value="Special Package">Special Package ($20)</option>
+                    <option value="Basic Package">Basic Package ($50)</option>
+                    <option value="Standard Package">Standard Package ($100)</option>
+                    <option value="Premium Package">Premium Package ($200)</option>
+                </select>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleDarkMode() {
+            const toggle = document.getElementById('darkModeToggle');
+            if (toggle.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const toggle = document.getElementById('darkModeToggle');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggle.checked = true;
+            } else {
+                document.body.classList.remove('dark-mode');
+                toggle.checked = false;
+            }
+        });
+    </script>
+</body>
+</html>

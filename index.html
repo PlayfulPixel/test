@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malachite Studios</title>
+    <style>
+        :root {
+            --bg-color: #f0f0f0;
+            --text-color: #333;
+            --card-bg: white;
+            --header-bg: #333;
+            --nav-bg: #444;
+            --footer-bg: #333;
+            --primary-color: #2196F3;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo {
+            max-height: 100px;
+            width: auto;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-title {
+            margin: 0;
+        }
+
+        .header-subtitle {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .dark-mode-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 15px;
+        }
+
+        .dark-mode-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        nav {
+            background-color: var(--nav-bg);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        .slideshow-container {
+            max-width: 900px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .slide {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide h3 {
+            margin: 0 0 10px;
+            color: var(--primary-color);
+        }
+
+        .slide p {
+            margin: 0 0 15px;
+        }
+
+        .slide .price {
+            font-size: 1.5em;
+            color: #2ecc71;
+            margin-bottom: 10px;
+        }
+
+        .slide .select-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .slide .select-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-card {
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .logo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+
+
+
+        h1, h3 {
+            margin: 0;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2a2a2a;
+            --header-bg: #222;
+            --nav-bg: #333;
+            --footer-bg: #222;
+            --primary-color: #42a5f5;
+        }
+        .logo-card {
+    transition: transform 0.3s ease;
+}
+.logo-card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Stronger shadow on hover */
+}
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="designs.html">Designs</a>
+        <a href="about.html">About Me</a>
+        <a href="pricing.html">Pricing</a>
+    </nav>
+
+    <div class="slideshow-container">
+        <div class="slide active">
+            <div class="slice active">
+            </div>
+
+            <h3>Basic Package</h3>
+            <p class="price">$50</p>
+            <p>Up to 1 Logo Design<br>1 Revision<br>Delivery in 3 Days</p>
+            <a href="pricing.html" class="select-btn">Select</a>
+        </div>
+        
+        <div class="slide">
+            <h3>Standard Package</h3>
+            <p class="price">$100</p>
+            <p>Up to2 Logo Designs<br>2 Revisions<br>Delivery in 5 Days<br></p>
+            <a href="pricing.html" class="select-btn">Select</a>
+        </div>
+        <div class="slide">
+            <h3>Premium Package</h3>
+            <p class="price">$200</p>
+            <p>3 Logo Designs<br>Unlimited Revisions<br>Delivery in 5 Days<br></p>
+            <a href="pricing.html" class="select-btn">Select</a>
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">❮</button>
+        <button class="next" onclick="changeSlide(1)">❯</button>
+    </div>
+
+    <div class="gallery">
+        <div class="logo-card">
+            <img src="PaymentLink.png" alt="Logo 1">
+            <h3>Payment Link</h3>
+            <p>A modern design symbolizing seamless transactions.</p>
+        </div>
+
+        <div class="logo-card">
+            <img src="DungeonExplorers.png" alt="Logo 2">
+            <h3>Dungeon Explorers</h3>
+            <p>A playful logo for an adventurous game.</p>
+        </div>
+
+        <div class="logo-card">
+            <img src="SpeedRacers.png" alt="Logo 3">
+            <h3>Speed Racers</h3>
+            <p>A vibrant design capturing racing excitement.</p>
+        </div>
+
+        <div class="logo-card">
+            <img src="UrInsured.png" alt="Logo 4">
+            <h3>UrInsured</h3>
+            <p>A Neon logo for an Insurance Logo</p>
+        </div>
+
+        <div class="logo-card">
+            <img src="Mater.png" alt="Logo 5">
+            <h3>Mater</h3>
+            <p>A sleek and modern blue logo design</p>
+        </div>
+
+        <div class="logo-card">
+            <img src="SpaceX.png" alt="Logo 6">
+            <h3>SpaceX</h3>
+            <p>A purple themed space Logo</p>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleDarkMode() {
+            const toggle = document.getElementById('darkModeToggle');
+            if (toggle.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const toggle = document.getElementById('darkModeToggle');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggle.checked = true;
+            } else {
+                document.body.classList.remove('dark-mode');
+                toggle.checked = false;
+            }
+        });
+
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("slide");
+
+        function showSlide(index) {
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slides[slideIndex].classList.add("active");
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
+        }
+
+        // Automatic slideshow
+        setInterval(() => changeSlide(1), 5000); // Changes slide every 5 seconds
+
+        // Initialize with the first slide
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>

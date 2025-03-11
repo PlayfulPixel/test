@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        /* Define CSS variables for light mode */
+        :root {
+            --bg-color: #f0f0f0;
+            --text-color: #333;
+            --card-bg: white;
+            --header-bg: #333;
+            --nav-bg: #444;
+            --footer-bg: #333;
+            --skills-bg: #f0f0f0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .dark-mode-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 15px;
+        }
+
+        .dark-mode-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        nav {
+            background-color: var(--nav-bg);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .about-section {
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .about-section h2 {
+            color: var(--text-color);
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
+        }
+
+        .profile-pic {
+            max-width: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .skills-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background-color: var(--skills-bg);
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .contact-info {
+            font-style: italic;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2a2a2a;
+            --header-bg: #222;
+            --nav-bg: #333;
+            --footer-bg: #222;
+            --skills-bg: #3a3a3a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Me</h1>
+        <label class="dark-mode-toggle">
+            <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode(this.checked)">
+            <span class="slider"></span>
+        </label>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="designs.html">Designs</a>
+    </nav>
+
+    <div class="about-container">
+        <div class="about-section">
+            <img src="irlpfp.png" alt="Profile Picture" class="profile-pic">
+            <h2>Who I Am</h2>
+            <p>Hello! My name is Malachite, and I am a graphic design who specializes In logo design with a flair for creating unique and impactful designs. I have recently started logo design. I specialize in creating logos for companies and brands.</p>
+            <p>Some of my favorite projects include the vibrant 'Speed Racers' logo, the adventurous 'Dungeon Explorers' design, and the sleek 'Payment Link' concept, all of which you can explore on my portfolio page. I thrive on challenges and enjoy collaborating with clients to turn their visions into reality.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>Logo Design & Branding</li>
+                <li>Graphic Design</li>
+                <li>Web Design Basics (HTML, CSS)</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Contact Me</h2>
+            <p class="contact-info">Email: TBA</p>
+            <p>I’d love to hear about your next project! Feel free to reach out, and let’s create something amazing together.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Testimonials</h2>
+            <p><em>TBA</em></p>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleDarkMode(isChecked) {
+            if (isChecked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Apply saved theme on page load
+        window.onload = function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.getElementById('darkModeToggle').checked = true;
+                document.body.classList.add('dark-mode');
+            }
+        };
+    </script>
+</body>
+</html>
